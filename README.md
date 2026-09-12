@@ -7,7 +7,7 @@
 ![Bootstrap](https://img.shields.io/badge/Bootstrap-563D7C?style=for-the-badge&logo=bootstrap&logoColor=white)
 
 ## 📌 Sobre o Projeto
-Sistema de gerenciamento de estoque e cadastro de produtos desenvolvido para uma loja de velas aromáticas artesanais. O objetivo do sistema é controlar o fluxo de insumos (como potes de vidro, adesivos personalizados) e os produtos finais, garantindo a organização do negócio.
+Sistema de gerenciamento de estoque e cadastro de produtos desenvolvido para loja de velas aromáticas artesanais. O objetivo do sistema é controlar o fluxo de insumos (como potes de vidro, ceras, aromas e Essências ) e os produtos finais, garantindo a organização do negócio e os produtos.
 
 ## 🚀 Funcionalidades Entregues (AC1)
 A primeira fase do projeto contempla a funcionalidade central do negócio:
