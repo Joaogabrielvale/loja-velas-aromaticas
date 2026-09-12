@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Loja de Velas - Editar</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        body { background-color: #212529; color: white; }
+        .sidebar { width: 260px; height: 100vh; background-color: #1a1d20; border-right: 2px solid #d4af37; }
+        .main-content { flex-grow: 1; height: 100vh; overflow-y: auto; }
+        .nav-link { color: #adb5bd !important; margin-bottom: 10px; font-size: 1.1rem; }
+        .nav-link:hover { color: #d4af37 !important; background-color: rgba(255, 255, 255, 0.05); }
+        /* Remoção da seta por enquanto*/
+        input[type="number"]::-webkit-outer-spin-button,
+    input[type="number"]::-webkit-inner-spin-button {
+        -webkit-appearance: none;
+        appearance: none;
+        margin: 0;
+    }
+    input[type="number"] {
+        -moz-appearance: textfield;
+        appearance: textfield;
+    }
+    </style>
+    <link rel="shortcut icon" href="/static/vela-logo.ico" type="image/x-icon">
+</head>
+<body class="d-flex">
+
+    <nav class="sidebar d-flex flex-column p-4">
+        <a href="/" class="d-flex align-items-center mb-4 text-white text-decoration-none">
+            <span class="fs-4 fw-bold"><i class="fa-solid fa-fire-flame-curved me-2" style="color: #d4af37;"></i> Velas System</span>
+        </a>
+        <hr class="text-secondary">
+        <ul class="nav nav-pills flex-column mb-auto mt-2">
+            <li class="nav-item"><a href="#" class="nav-link"><i class="fa-solid fa-chart-pie me-3"></i> Visão Geral</a></li>
+            <li><a href="/" class="nav-link"><i class="fa-solid fa-plus me-3"></i> Cadastrar Vela</a></li>
+            <li><a href="/estoque" class="nav-link"><i class="fa-solid fa-box-open me-3"></i> Estoque</a></li>
+        </ul>
+    </nav>
+
+    <div class="main-content p-5">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-md-10">
+                    <div class="card shadow-lg border-0" style="background-color: #2c2f33;">
+                        <div class="card-header text-white" style="background-color: #1a1d20; border-bottom: 2px solid #d4af37;">
+                            <!-- O título mudou para "Editar" -->
+                            <h4 class="mb-0 mt-1"><i class="fa-solid fa-pen-to-square me-2" style="color: #d4af37;"></i> Editar Vela: {{ vela.nome }}</h4>
+                        </div>
+                        <div class="card-body text-white p-4">
+                            
+                            <!-- O formulário agora envia para o /atualizar/ID -->
+                            <form action="/atualizar/{{ vela.id }}" method="POST">
+                                
+                                <div class="mb-4">
+                                    <label class="form-label text-light">Nome da Vela</label>
+                                    <!-- O atributo 'value' traz o texto preenchido do banco -->
+                                    <input type="text" class="form-control bg-dark text-white border-secondary" name="nome" value="{{ vela.nome }}" required>
+                                </div>
+                                
+                                <div class="mb-4">
+                                    <label class="form-label text-light">Aroma Principal</label>
+                                    <input type="text" class="form-control bg-dark text-white border-secondary" name="aroma" value="{{ vela.aroma }}" required>
+                                </div>
+                                
+                                <div class="mb-4">
+                                    <label class="form-label text-light">Descrição</label>
+                                    <textarea class="form-control bg-dark text-white border-secondary" name="descricao" rows="3">{{ vela.descricao }}</textarea>
+                                </div>
+                                
+                                <div class="row">
+                                    <div class="col-md-6 mb-4">
+                                        <label class="form-label text-light">Preço (R$)</label>
+                                        <input type="number" step="0.01" class="form-control bg-dark text-white border-secondary" name="preco" value="{{ vela.preco }}" required>
+                                    </div>
+                                    <div class="col-md-6 mb-4">
+                                        <label class="form-label text-light">Quantidade em Estoque</label>
+                                        <input type="number" class="form-control bg-dark text-white border-secondary" name="quantidade" value="{{ vela.quantidade }}" required>
+                                    </div>
+                                </div>
+                                
+                                <div class="d-flex gap-2 mt-2">
+                                    <a href="/estoque" class="btn btn-secondary w-50">Cancelar</a>
+                                    <button type="submit" class="btn w-50" style="background-color: #d4af37; color: black; font-weight: bold;">
+                                        <i class="fa-solid fa-check me-2"></i> Atualizar Produto
+                                    </button>
+                                </div>
+                            </form>
+                            
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>
