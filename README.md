@@ -25,11 +25,11 @@ A primeira fase do projeto contemplou a funcionalidade central do negócio:
 
 ## 🛠️ Como rodar o projeto localmente
 1. Certifique-se de ter o serviço do MySQL rodando em sua máquina (e o banco `loja_velas` criado).
-2. Instale as dependências executando no terminal:
+2. Instalar as dependências executando no terminal:
    `pip install flask mysql-connector-python`
-3. Execute a aplicação Python:
+3. Executar a aplicação Python:
    `python app.py`
-4. Acesse pelo navegador através do endereço `http://127.0.0.1:5000`
+4. Acessar pelo navegador através do endereço `http://127.0.0.1:5000`
 
 ---
-*Desenvolvido como projeto acadêmico de análise e desenvolvimento de sistemas (Faculdade Impacta).*
+*Desenvolvido como projeto acadêmico de análise e desenvolvimento de sistemas (Faculdade Impacta de Tecnologia).*
