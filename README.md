@@ -12,7 +12,7 @@ Sistema de gerenciamento de estoque e cadastro de produtos desenvolvido para loj
 ## 🚀 Funcionalidades Entregues (AC2) - *Fase Atual*
 A segunda fase do projeto foca em inteligência de dados, cálculos automáticos e finalização das operações de banco:
 - [x] **Dashboard Dinâmico (Visão Geral):** Criação de uma tela inicial inteligente com painéis estatísticos (Cards) estilizados com Bootstrap.
-- [x] **Cálculos Avançados em SQL:** Implementação de queries lógicas no Python utilizando `COUNT` (para contagem de catálogo) e `SUM(preco * quantidade)` atrelado à função `COALESCE` para projeção financeira do estoque em tempo real.
+- [x] **Cálculos em SQL:** Implementação de queries lógicas no Python utilizando `COUNT` (para contagem de catálogo) e `SUM(preco * quantidade)` atrelado à função `COALESCE` para projeção financeira do estoque em tempo real.
 - [x] **Finalização do CRUD (Delete):** Implementação e validação da rota de exclusão conectada ao MySQL, permitindo remover registros do estoque de forma segura e imediata.
 - [x] **Refatoração de Arquitetura de Software:** Separação do front-end em templates modulares (rotas exclusivas para `/`, `/cadastro` e `/estoque`), garantindo navegação sem bugs e sistema escalável.
 
