@@ -17,19 +17,18 @@ def index():
     conexao = conectar_banco()
     cursor = conexao.cursor()
 
-    # 1. Conta quantas velas diferentes existem cadastradas
+    
     cursor.execute("SELECT COUNT(*) FROM velas")
     total_velas = cursor.fetchone()[0]
 
-    # 2. Calcula o valor total em dinheiro no estoque (Preço * Quantidade)
-    # O COALESCE garante que, se o banco estiver vazio, o valor seja 0 em vez de dar erro
+    
     cursor.execute("SELECT COALESCE(SUM(preco * quantidade), 0) FROM velas")
     valor_estoque = cursor.fetchone()[0]
 
     cursor.close()
     conexao.close()
 
-    # Envia os resultados da matemática para o HTML
+    
     return render_template('index.html', total_velas=total_velas, valor_estoque=valor_estoque)
 @app.route('/cadastro')
 def tela_cadastro():
@@ -110,25 +109,25 @@ def atualizar(id):
         return redirect('/estoque')
 @app.route('/deletar/<int:id>', methods=['POST'])
 def deletar_vela(id):
-    # Conecta ao banco de dados
+    
     conexao = mysql.connector.connect(
         host='localhost',
         user='root',
-        password='Gelaty81@@', # Coloque sua senha do MySQL aqui, se tiver
+        password='Gelaty81@@',
         database='loja_velas'
     )
     cursor = conexao.cursor()
     
-    # Comando SQL para deletar a vela pelo ID
+    
     sql = "DELETE FROM velas WHERE id = %s"
     cursor.execute(sql, (id,))
     
-    # Salva a alteração e fecha a conexão
+    
     conexao.commit()
     cursor.close()
     conexao.close()
     
-    # Volta para a página de estoque atualizada
+    
     return redirect('/estoque')
 
 if __name__ == '__main__':
