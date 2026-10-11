@@ -12,7 +12,7 @@
         .main-content { flex-grow: 1; height: 100vh; overflow-y: auto; }
         .nav-link { color: #adb5bd !important; margin-bottom: 10px; font-size: 1.1rem; }
         .nav-link:hover { color: #d4af37 !important; background-color: rgba(255, 255, 255, 0.05); }
-        /* Remoção da seta por enquanto*/
+        
         input[type="number"]::-webkit-outer-spin-button,
     input[type="number"]::-webkit-inner-spin-button {
         -webkit-appearance: none;
@@ -23,15 +23,58 @@
         -moz-appearance: textfield;
         appearance: textfield;
     }
+    /* Animação de Fogo Realista com Turbulência SVG */
+.chama-viva {
+    color: #d4af37;
+    display: inline-block;
+    transform-origin: bottom center; /* Mantém o pé do fogo fixo na vela */
+    
+    /* Aplica a distorção fractal do SVG invisível, deformando o desenho */
+    filter: url(#distorcao-fogo) drop-shadow(0 -2px 4px rgba(212, 175, 55, 0.6)) drop-shadow(0 0 10px rgba(230, 126, 34, 0.5));
+    
+    /* Pulsação de tamanho de forma muito discreta e assimétrica */
+    animation: queima-velas 1.5s infinite ease-in-out alternate;
+}
+
+@keyframes queima-velas {
+    0% {
+        transform: scale(0.98, 1.02) skewX(-1deg);
+    }
+    30% {
+        transform: scale(1.03, 0.96) skewX(1deg);
+    }
+    60% {
+        transform: scale(0.96, 1.04) skewX(-0.5deg);
+    }
+    100% {
+        transform: scale(1.02, 0.98) skewX(0.8deg);
+    }
+}
     </style>
-    <link rel="shortcut icon" href="/static/vela-logo.ico" type="image/x-icon">
+    <link rel="shortcut icon" href="{{ url_for('static', filename='vela-logo-oficial.ico') }}" type="image/x-icon">
 </head>
 <body class="d-flex">
 
     <nav class="sidebar d-flex flex-column p-4">
         <a href="/" class="d-flex align-items-center mb-4 text-white text-decoration-none">
-            <span class="fs-4 fw-bold"><i class="fa-solid fa-fire-flame-curved me-2" style="color: #d4af37;"></i> Velas System</span>
-        </a>
+    <span class="fs-4 fw-bold d-flex align-items-center">
+        <!-- O ícone do fogo com a classe da chama viva -->
+        <i class="fa-solid fa-fire-flame-curved me-2 chama-viva"></i> 
+        Velas System
+    </span>
+</a>
+
+<!-- Gerador invisível de turbulência que deforma o fogo de forma realista -->
+<svg style="width: 0; height: 0; position: absolute;">
+    <defs>
+        <filter id="distorcao-fogo">
+            <feTurbulence type="fractalNoise" baseFrequency="0.04 0.15" numOctaves="3" result="noise">
+                <animate attributeName="baseFrequency" values="0.04 0.15; 0.04 0.35; 0.04 0.15" dur="1.2s" repeatCount="indefinite" />
+            </feTurbulence>
+            <feDisplacementMap in="SourceGraphic" in2="noise" scale="4" xChannelSelector="R" yChannelSelector="G" />
+        </filter>
+    </defs>
+</svg>
         <hr class="text-secondary">
         <ul class="nav nav-pills flex-column mb-auto mt-2">
             <li class="nav-item"><a href="#" class="nav-link"><i class="fa-solid fa-chart-pie me-3"></i> Visão Geral</a></li>
@@ -46,17 +89,17 @@
                 <div class="col-md-10">
                     <div class="card shadow-lg border-0" style="background-color: #2c2f33;">
                         <div class="card-header text-white" style="background-color: #1a1d20; border-bottom: 2px solid #d4af37;">
-                            <!-- O título mudou para "Editar" -->
+                            
                             <h4 class="mb-0 mt-1"><i class="fa-solid fa-pen-to-square me-2" style="color: #d4af37;"></i> Editar Vela: {{ vela.nome }}</h4>
                         </div>
                         <div class="card-body text-white p-4">
                             
-                            <!-- O formulário agora envia para o /atualizar/ID -->
+                            
                             <form action="/atualizar/{{ vela.id }}" method="POST">
                                 
                                 <div class="mb-4">
                                     <label class="form-label text-light">Nome da Vela</label>
-                                    <!-- O atributo 'value' traz o texto preenchido do banco -->
+                                    
                                     <input type="text" class="form-control bg-dark text-white border-secondary" name="nome" value="{{ vela.nome }}" required>
                                 </div>
                                 

@@ -14,8 +14,26 @@ def conectar_banco():
 
 @app.route('/')
 def index():
-    return render_template('index.html')
+    conexao = conectar_banco()
+    cursor = conexao.cursor()
 
+    # 1. Conta quantas velas diferentes existem cadastradas
+    cursor.execute("SELECT COUNT(*) FROM velas")
+    total_velas = cursor.fetchone()[0]
+
+    # 2. Calcula o valor total em dinheiro no estoque (Preço * Quantidade)
+    # O COALESCE garante que, se o banco estiver vazio, o valor seja 0 em vez de dar erro
+    cursor.execute("SELECT COALESCE(SUM(preco * quantidade), 0) FROM velas")
+    valor_estoque = cursor.fetchone()[0]
+
+    cursor.close()
+    conexao.close()
+
+    # Envia os resultados da matemática para o HTML
+    return render_template('index.html', total_velas=total_velas, valor_estoque=valor_estoque)
+@app.route('/cadastro')
+def tela_cadastro():
+    return render_template('cadastro.html')
 @app.route('/cadastrar', methods=['POST'])
 def cadastrar():
     if request.method == 'POST':
@@ -53,12 +71,12 @@ def estoque():
     return render_template('estoque.html', velas=velas)
 @app.route('/editar/<int:id>')
 def editar(id):
-    # Vai no banco e busca apenas a vela que tem esse ID
+    
     conexao = conectar_banco()
     cursor = conexao.cursor(dictionary=True)
     
     cursor.execute("SELECT * FROM velas WHERE id = %s", (id,))
-    vela = cursor.fetchone() # fetchone pega só 1 resultado
+    vela = cursor.fetchone() 
     
     cursor.close()
     conexao.close()
@@ -68,14 +86,14 @@ def editar(id):
 @app.route('/atualizar/<int:id>', methods=['POST'])
 def atualizar(id):
     if request.method == 'POST':
-        # Pega os novos dados que vieram da tela
+        
         nome = request.form['nome']
         aroma = request.form['aroma']
         descricao = request.form['descricao']
         preco = request.form['preco']
         quantidade = request.form['quantidade']
 
-        # Atualiza no banco de dados (UPDATE)
+        
         conexao = conectar_banco()
         cursor = conexao.cursor()
 
@@ -88,7 +106,30 @@ def atualizar(id):
         cursor.close()
         conexao.close()
 
-        # Volta para a tela de estoque para ver a mudança
+        
         return redirect('/estoque')
+@app.route('/deletar/<int:id>', methods=['POST'])
+def deletar_vela(id):
+    # Conecta ao banco de dados
+    conexao = mysql.connector.connect(
+        host='localhost',
+        user='root',
+        password='Gelaty81@@', # Coloque sua senha do MySQL aqui, se tiver
+        database='loja_velas'
+    )
+    cursor = conexao.cursor()
+    
+    # Comando SQL para deletar a vela pelo ID
+    sql = "DELETE FROM velas WHERE id = %s"
+    cursor.execute(sql, (id,))
+    
+    # Salva a alteração e fecha a conexão
+    conexao.commit()
+    cursor.close()
+    conexao.close()
+    
+    # Volta para a página de estoque atualizada
+    return redirect('/estoque')
+
 if __name__ == '__main__':
     app.run(debug=True)
