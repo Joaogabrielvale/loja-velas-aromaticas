@@ -1,4 +1,4 @@
-# 🕯️ Sistema de Gestão - Velas Aromáticas
+# 🕯️ Sistema de Gestão de Velas Aromáticas
 
 ![Status](https://img.shields.io/badge/Status-Em_Desenvolvimento-amber)
 ![Python](https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=python&logoColor=white)
@@ -7,17 +7,17 @@
 ![Bootstrap](https://img.shields.io/badge/Bootstrap-563D7C?style=for-the-badge&logo=bootstrap&logoColor=white)
 
 ## 📌 Sobre o Projeto
-Sistema de gerenciamento de estoque e cadastro de produtos desenvolvido para loja de velas aromáticas artesanais. O objetivo do sistema é controlar o fluxo de insumos (como potes de vidro, ceras, aromas e essências) e os produtos finais, garantindo a organização do negócio e do catálogo.
+Sistema de gerenciamento de estoque e cadastro de produtos desenvolvidos para loja de velas aromáticas artesanais. O objetivo do sistema é controlar o fluxo de insumos (como potes de vidro, ceras, aromas e essências) e os produtos finais, garantindo a organização do negócio e do catálogo.
 
 ## 🚀 Funcionalidades Entregues (AC2) - *Fase Atual*
-A segunda fase do projeto foca em inteligência de dados, cálculos automáticos e finalização das operações de banco:
+A segunda fase do projeto temos o foco em inteligência de dados, cálculos automáticos e finalização das operações de banco:
 - [x] **Dashboard Dinâmico (Visão Geral):** Criação de uma tela inicial inteligente com painéis estatísticos (Cards) estilizados com Bootstrap.
 - [x] **Cálculos em SQL:** Implementação de queries lógicas no Python utilizando `COUNT` (para contagem de catálogo) e `SUM(preco * quantidade)` atrelado à função `COALESCE` para projeção financeira do estoque em tempo real.
 - [x] **Finalização do CRUD (Delete):** Implementação e validação da rota de exclusão conectada ao MySQL, permitindo remover registros do estoque de forma segura e imediata.
 - [x] **Refatoração de Arquitetura de Software:** Separação do front-end em templates modulares (rotas exclusivas para `/`, `/cadastro` e `/estoque`), garantindo navegação sem bugs e sistema escalável.
 
 ## 🚀 Funcionalidades Entregues (AC1)
-A primeira fase do projeto contemplou a funcionalidade central do negócio:
+A primeira fase do projeto contemplou as funcionalidade central do negócio:
 - [x] **Arquitetura em 3 Camadas:** Front-end, Back-end e Banco de Dados 100% integrados.
 - [x] **Banco de Dados (MySQL):** Criação da tabela `velas` com campos para nome, aroma, descrição sensorial, preço e quantidade.
 - [x] **Back-end (Python/Flask):** Rotas estruturadas para recebimento de requisições GET e POST.
