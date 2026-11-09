@@ -77,10 +77,14 @@
 </svg>
         <hr class="text-secondary">
         <ul class="nav nav-pills flex-column mb-auto mt-2">
-            <li class="nav-item"><a href="#" class="nav-link"><i class="fa-solid fa-chart-pie me-3"></i> Visão Geral</a></li>
-            <li><a href="/" class="nav-link"><i class="fa-solid fa-plus me-3"></i> Cadastrar Vela</a></li>
+            <li class="nav-item"><a href="/" class="nav-link"><i class="fa-solid fa-chart-pie me-3"></i> Visão Geral</a></li>
+            <li><a href="/cadastro" class="nav-link"><i class="fa-solid fa-plus me-3"></i> Cadastrar Vela</a></li>
             <li><a href="/estoque" class="nav-link"><i class="fa-solid fa-box-open me-3"></i> Estoque</a></li>
         </ul>
+        <hr class="text-secondary">
+        <a href="/logout" class="nav-link text-danger d-flex align-items-center" style="margin-bottom: 0;">
+            <i class="fa-solid fa-right-from-bracket me-3"></i> Sair do Sistema
+        </a>
     </nav>
 
     <div class="main-content p-5">
@@ -99,13 +103,25 @@
                                 
                                 <div class="mb-4">
                                     <label class="form-label text-light">Nome da Vela</label>
-                                    
                                     <input type="text" class="form-control bg-dark text-white border-secondary" name="nome" value="{{ vela.nome }}" required>
                                 </div>
-                                
-                                <div class="mb-4">
-                                    <label class="form-label text-light">Aroma Principal</label>
-                                    <input type="text" class="form-control bg-dark text-white border-secondary" name="aroma" value="{{ vela.aroma }}" required>
+
+                                <div class="row">
+                                    <div class="col-md-6 mb-4">
+                                        <label class="form-label text-light">Categoria Olfativa</label>
+                                        <select class="form-select bg-dark text-white border-secondary" name="categoria" required>
+                                            <option value="Floral" {% if vela.categoria == 'Floral' %}selected{% endif %}>Floral</option>
+                                            <option value="Amadeirada" {% if vela.categoria == 'Amadeirada' %}selected{% endif %}>Amadeirada</option>
+                                            <option value="Cítrica" {% if vela.categoria == 'Cítrica' %}selected{% endif %}>Cítrica</option>
+                                            <option value="Doce" {% if vela.categoria == 'Doce' %}selected{% endif %}>Doce</option>
+                                            <option value="Herbal" {% if vela.categoria == 'Herbal' %}selected{% endif %}>Herbal</option>
+                                            <option value="Aromática" {% if vela.categoria == 'Aromática' %}selected{% endif %}>Aromática</option>
+                                        </select>
+                                    </div>
+                                    <div class="col-md-6 mb-4">
+                                        <label class="form-label text-light">Aroma Principal</label>
+                                        <input type="text" class="form-control bg-dark text-white border-secondary" name="aroma" value="{{ vela.aroma }}" required>
+                                    </div>
                                 </div>
                                 
                                 <div class="mb-4">

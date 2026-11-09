@@ -72,6 +72,10 @@
             <li><a href="/cadastro" class="nav-link active"><i class="fa-solid fa-plus me-3"></i> Cadastrar Vela</a></li>
             <li><a href="/estoque" class="nav-link"><i class="fa-solid fa-box-open me-3"></i> Estoque</a></li>
         </ul>
+        <hr class="text-secondary">
+        <a href="/logout" class="nav-link text-danger d-flex align-items-center" style="margin-bottom: 0;">
+            <i class="fa-solid fa-right-from-bracket me-3"></i> Sair do Sistema
+        </a>
     </nav>
 
     
@@ -89,9 +93,22 @@
                                     <label for="nome" class="form-label text-light">Nome da Vela</label>
                                     <input type="text" class="form-control bg-dark text-white border-secondary" id="nome" name="nome" placeholder="Ex: Brisa do Mar" required>
                                 </div>
-                                <div class="mb-4">
-                                    <label for="aroma" class="form-label text-light">Aroma Principal</label>
-                                    <input type="text" class="form-control bg-dark text-white border-secondary" id="aroma" name="aroma" placeholder="Ex: Lavanda e Alecrim" required>
+                                <div class="row">
+                                    <div class="col-md-6 mb-4">
+                                        <label for="categoria" class="form-label text-light">Categoria Olfativa</label>
+                                        <select class="form-select bg-dark text-white border-secondary" id="categoria" name="categoria" required>
+                                            <option value="Floral">Floral</option>
+                                            <option value="Amadeirada">Amadeirada</option>
+                                            <option value="Cítrica">Cítrica</option>
+                                            <option value="Doce">Doce</option>
+                                            <option value="Herbal">Herbal</option>
+                                            <option value="Aromática">Aromática</option>
+                                        </select>
+                                    </div>
+                                    <div class="col-md-6 mb-4">
+                                        <label for="aroma" class="form-label text-light">Aroma Principal</label>
+                                        <input type="text" class="form-control bg-dark text-white border-secondary" id="aroma" name="aroma" placeholder="Ex: Lavanda e Alecrim" required>
+                                    </div>
                                 </div>
                                 <div class="mb-4">
                                     <label for="descricao" class="form-label text-light">Descrição (Sensação e Detalhes)</label>
