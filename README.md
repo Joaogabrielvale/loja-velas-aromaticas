@@ -17,7 +17,7 @@ Na terceira fase do projeto, o foco foi a expansão das regras de negócio, clas
 - ☑️ **Filtro de Categoria e Pesquisa Dinâmica:** Implementação de barra de busca instantânea e consultas dinâmicas em SQL (`WHERE` e `LIKE`) na rota `/estoque`, permitindo filtrar produtos rapidamente por nome, aroma ou categoria olfativa.
 - ☑️ **Sistema de Login e Proteção de Rotas:** Criação da tabela `usuarios` no MySQL, interface exclusiva de autenticação (`login.html`) e controle de sessão via Flask (`session`) para proteger as rotas do painel administrativo, acompanhado de funcionalidade de Logout seguro.
 
-## 🚀 Funcionalidades Entregues (AC2) - *Fase Atual*
+## 🚀 Funcionalidades Entregues (AC2)
 A segunda fase do projeto temos o foco em inteligência de dados, cálculos automáticos e finalização das operações de banco:
 - [x] **Dashboard Dinâmico (Visão Geral):** Criação de uma tela inicial inteligente com painéis estatísticos (Cards) estilizados com Bootstrap.
 - [x] **Cálculos em SQL:** Implementação de queries lógicas no Python utilizando `COUNT` (para contagem de catálogo) e `SUM(preco * quantidade)` atrelado à função `COALESCE` para projeção financeira do estoque em tempo real.
