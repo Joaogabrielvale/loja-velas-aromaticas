@@ -9,6 +9,14 @@
 ## 📌 Sobre o Projeto
 Sistema de gerenciamento de estoque e cadastro de produtos desenvolvidos para loja de velas aromáticas artesanais. O objetivo do sistema é controlar o fluxo de insumos (como potes de vidro, ceras, aromas e essências) e os produtos finais, garantindo a organização do negócio e do catálogo.
 
+## 🚀 Funcionalidades Entregues (AC3) - *Fase Atual*
+
+Na terceira fase do projeto, o foco foi a expansão das regras de negócio, classificação de catálogo, filtragem avançada e segurança de acesso:
+
+- ☑️ **Categorização por Famílias Olfativas:** Evolução da tabela `velas` no MySQL (`ALTER TABLE`) com a coluna `categoria` e adição de campo de seleção (*Dropdown*) nos formulários de cadastro e edição (Floral, Amadeirada, Cítrica, Doce, Herbal e Aromática).
+- ☑️ **Filtro de Categoria e Pesquisa Dinâmica:** Implementação de barra de busca instantânea e consultas dinâmicas em SQL (`WHERE` e `LIKE`) na rota `/estoque`, permitindo filtrar produtos rapidamente por nome, aroma ou categoria olfativa.
+- ☑️ **Sistema de Login e Proteção de Rotas:** Criação da tabela `usuarios` no MySQL, interface exclusiva de autenticação (`login.html`) e controle de sessão via Flask (`session`) para proteger as rotas do painel administrativo, acompanhado de funcionalidade de Logout seguro.
+
 ## 🚀 Funcionalidades Entregues (AC2) - *Fase Atual*
 A segunda fase do projeto temos o foco em inteligência de dados, cálculos automáticos e finalização das operações de banco:
 - [x] **Dashboard Dinâmico (Visão Geral):** Criação de uma tela inicial inteligente com painéis estatísticos (Cards) estilizados com Bootstrap.
