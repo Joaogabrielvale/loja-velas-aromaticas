@@ -9,6 +9,14 @@
 ## 📌 Sobre o Projeto
 Sistema de gerenciamento de estoque e cadastro de produtos desenvolvidos para loja de velas aromáticas artesanais. O objetivo do sistema é controlar o fluxo de insumos (como potes de vidro, ceras, aromas e essências) e os produtos finais, garantindo a organização do negócio e do catálogo.
 
+## 🎓 Funcionalidades Entregues (Prova Final) - *Entrega Final*
+
+Na etapa final do projeto, foram implementadas melhorias operacionais de fluxo rápido no estoque, alertas gerenciais e a documentação formal da arquitetura em UML:
+
+- ☑️ **Registro Rápido de Venda (-1) e Reposição (+1):** Criação das rotas `/vender/<id>` e `/repor/<id>` (método `POST`) integradas ao MySQL para dar baixa imediata de vendas ou repor unidades direto na tabela de estoque, sem necessidade de abrir a tela de edição.
+- ☑️ **Indicador de Alertas no Dashboard:** Expansão da consulta SQL na rota principal (`/`) para contabilizar automaticamente produtos com estoque baixo ou crítico (`< 10` unidades), exibindo o total em um novo card de alerta na Visão Geral.
+- ☑️ **Modelagem UML (Classes e Casos de Uso):** Elaboração do Diagrama de Classes (`Usuario`, `Vela` e `ControladorLoja`) e do Diagrama de Casos de Uso (`Administrador`, regras de autenticação `<<include>>` e operações de estoque `<<extend>>`).
+
 ## 🚀 Funcionalidades Entregues (AC3) - *Fase Atual*
 
 Na terceira fase do projeto, o foco foi a expansão das regras de negócio, classificação de catálogo, filtragem avançada e segurança de acesso:
