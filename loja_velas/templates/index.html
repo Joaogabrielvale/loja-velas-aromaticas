@@ -16,58 +16,42 @@
         .card-stat { transition: transform 0.2s; }
         .card-stat:hover { transform: translateY(-5px); }
         
-.chama-viva {
-    color: #d4af37;
-    display: inline-block;
-    transform-origin: bottom center; 
-    
-    
-    filter: url(#distorcao-fogo) drop-shadow(0 -2px 4px rgba(212, 175, 55, 0.6)) drop-shadow(0 0 10px rgba(230, 126, 34, 0.5));
-    
-    
-    animation: queima-velas 1.5s infinite ease-in-out alternate;
-}
-
-@keyframes queima-velas {
-    0% {
-        transform: scale(0.98, 1.02) skewX(-1deg);
-    }
-    30% {
-        transform: scale(1.03, 0.96) skewX(1deg);
-    }
-    60% {
-        transform: scale(0.96, 1.04) skewX(-0.5deg);
-    }
-    100% {
-        transform: scale(1.02, 0.98) skewX(0.8deg);
-    }
-}
+        .chama-viva {
+            color: #d4af37;
+            display: inline-block;
+            transform-origin: bottom center; 
+            filter: url(#distorcao-fogo) drop-shadow(0 -2px 4px rgba(212, 175, 55, 0.6)) drop-shadow(0 0 10px rgba(230, 126, 34, 0.5));
+            animation: queima-velas 1.5s infinite ease-in-out alternate;
+        }
+        @keyframes queima-velas {
+            0% { transform: scale(0.98, 1.02) skewX(-1deg); }
+            30% { transform: scale(1.03, 0.96) skewX(1deg); }
+            60% { transform: scale(0.96, 1.04) skewX(-0.5deg); }
+            100% { transform: scale(1.02, 0.98) skewX(0.8deg); }
+        }
     </style>
     <link rel="shortcut icon" href="{{ url_for('static', filename='vela-logo-oficial.ico') }}" type="image/x-icon">
 </head>
 <body class="d-flex">
     
-    
     <nav class="sidebar d-flex flex-column p-4">
         <a href="/" class="d-flex align-items-center mb-4 text-white text-decoration-none">
-    <span class="fs-4 fw-bold d-flex align-items-center">
-        
-        <i class="fa-solid fa-fire-flame-curved me-2 chama-viva"></i> 
-        Velas System
-    </span>
-</a>
+            <span class="fs-4 fw-bold d-flex align-items-center">
+                <i class="fa-solid fa-fire-flame-curved me-2 chama-viva"></i> 
+                Velas System
+            </span>
+        </a>
 
-
-<svg style="width: 0; height: 0; position: absolute;">
-    <defs>
-        <filter id="distorcao-fogo">
-            <feTurbulence type="fractalNoise" baseFrequency="0.04 0.15" numOctaves="3" result="noise">
-                <animate attributeName="baseFrequency" values="0.04 0.15; 0.04 0.35; 0.04 0.15" dur="1.2s" repeatCount="indefinite" />
-            </feTurbulence>
-            <feDisplacementMap in="SourceGraphic" in2="noise" scale="4" xChannelSelector="R" yChannelSelector="G" />
-        </filter>
-    </defs>
-</svg>
+        <svg style="width: 0; height: 0; position: absolute;">
+            <defs>
+                <filter id="distorcao-fogo">
+                    <feTurbulence type="fractalNoise" baseFrequency="0.04 0.15" numOctaves="3" result="noise">
+                        <animate attributeName="baseFrequency" values="0.04 0.15; 0.04 0.35; 0.04 0.15" dur="1.2s" repeatCount="indefinite" />
+                    </feTurbulence>
+                    <feDisplacementMap in="SourceGraphic" in2="noise" scale="4" xChannelSelector="R" yChannelSelector="G" />
+                </filter>
+            </defs>
+        </svg>
         <hr class="text-secondary">
         <ul class="nav nav-pills flex-column mb-auto mt-2">
             <li><a href="/" class="nav-link active"><i class="fa-solid fa-chart-pie me-3"></i> Visão Geral</a></li>
@@ -75,40 +59,51 @@
             <li><a href="/estoque" class="nav-link"><i class="fa-solid fa-box-open me-3"></i> Estoque</a></li>
         </ul>
 
-        
         <hr class="text-secondary">
         <a href="/logout" class="nav-link text-danger d-flex align-items-center" style="margin-bottom: 0;">
             <i class="fa-solid fa-right-from-bracket me-3"></i> Sair do Sistema
         </a>
     </nav>
 
-    
     <div class="main-content p-5">
         <div class="container">
             <h3 class="mb-4" style="color: #d4af37;"><i class="fa-solid fa-chart-line me-2"></i> Dashboard</h3>
             <div class="row">
-                <div class="col-md-6 mb-4">
+                <div class="col-md-4 mb-4">
                     <div class="card shadow-lg border-0 card-stat" style="background-color: #2c2f33;">
                         <div class="card-body p-4 d-flex align-items-center">
-                            <div class="rounded-circle d-flex align-items-center justify-content-center me-4" style="width: 70px; height: 70px; background-color: rgba(212, 175, 55, 0.2);">
+                            <div class="rounded-circle d-flex align-items-center justify-content-center me-3" style="width: 65px; height: 65px; background-color: rgba(212, 175, 55, 0.2);">
                                 <i class="fa-solid fa-boxes-stacked fa-2x" style="color: #d4af37;"></i>
                             </div>
                             <div>
-                                <h5 class="text-secondary mb-1">Tipos de Velas Cadastradas</h5>
+                                <h6 class="text-secondary mb-1">Tipos de Velas</h6>
                                 <h2 class="fw-bold mb-0 text-white">{{ total_velas }}</h2>
                             </div>
                         </div>
                     </div>
                 </div>
-                <div class="col-md-6 mb-4">
+                <div class="col-md-4 mb-4">
                     <div class="card shadow-lg border-0 card-stat" style="background-color: #2c2f33;">
                         <div class="card-body p-4 d-flex align-items-center">
-                            <div class="rounded-circle d-flex align-items-center justify-content-center me-4" style="width: 70px; height: 70px; background-color: rgba(40, 167, 69, 0.2);">
+                            <div class="rounded-circle d-flex align-items-center justify-content-center me-3" style="width: 65px; height: 65px; background-color: rgba(40, 167, 69, 0.2);">
                                 <i class="fa-solid fa-sack-dollar fa-2x text-success"></i>
                             </div>
                             <div>
-                                <h5 class="text-secondary mb-1">Valor Total em Estoque</h5>
+                                <h6 class="text-secondary mb-1">Valor em Estoque</h6>
                                 <h2 class="fw-bold mb-0 text-success">R$ {{ "%.2f"|format(valor_estoque|float) }}</h2>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <div class="card shadow-lg border-0 card-stat" style="background-color: #2c2f33;">
+                        <div class="card-body p-4 d-flex align-items-center">
+                            <div class="rounded-circle d-flex align-items-center justify-content-center me-3" style="width: 65px; height: 65px; background-color: rgba(220, 53, 69, 0.2);">
+                                <i class="fa-solid fa-triangle-exclamation fa-2x text-danger"></i>
+                            </div>
+                            <div>
+                                <h6 class="text-secondary mb-1">Alertas (&lt; 10 un.)</h6>
+                                <h2 class="fw-bold mb-0 text-danger">{{ estoque_baixo }}</h2>
                             </div>
                         </div>
                     </div>
